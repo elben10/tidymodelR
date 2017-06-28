@@ -2,15 +2,20 @@
 #' @importFrom stats model.frame model.matrix model.response
 
 # The following function is copied from RcppArmadillo, and the modified
+#' @export
+tidymod_lm_pure <- function(X, Y, ...) {
+  stopifnot(is.matrix(X), is.vector(Y), nrow(Y) == nrow(X))
+  
+  .Call("tidymodelR_lm_rcpp", X, Y, PACKAGE = "tidymodelR")
+}
 
 #' @export
 tidymod_lm_matrix <- function(X, Y, ...) {
   
   X <- as.matrix(X)
   Y <- as.numeric(Y)
-  stopifnot(is.matrix(X), is.vector(Y), nrow(Y) == nrow(X))
   
-  res <- lm_rcpp(X, Y)
+  res <- tidymod_lm_pure(X, Y)
   
   res$coefficients <- as.vector(res$coefficients)
   names(res$coefficients) <- colnames(X)

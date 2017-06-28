@@ -2,6 +2,7 @@
 
 export(tidymod_lm)
 export(tidymod_lm_matrix)
+export(tidymod_lm_pure)
 import(rlang)
 importFrom(Rcpp,evalCpp)
 importFrom(stats,model.frame)
