@@ -5,5 +5,7 @@ include:
 - r: oldrel
 - r: devel
 
+warnings_are_errors: false
+
 after_success:
 - Rscript -e 'covr::codecov()'
