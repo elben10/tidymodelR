@@ -1,0 +1,22 @@
+---
+output:
+  github_document:
+    html_preview: false
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+options(tibble.print_min = 5, tibble.print_max = 5)
+```
+
+# tidymodelR
+
+[![Build Status](https://travis-ci.org/elben10/tidymodelR.svg?branch=master)](https://travis-ci.org/elben10/tidymodelR) 
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/elben10/tidymodelR?branch=master&svg=true)](https://ci.appveyor.com/project/elben10/tidymodelR)
+[![codecov](https://codecov.io/gh/elben10/tidymodelr/branch/master/graph/badge.svg)](https://codecov.io/gh/elben10/tidymodelr)
+
+THE PACKAGE IS VERY MUCH UNDER CONSTRUCTION
