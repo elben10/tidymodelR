@@ -115,4 +115,18 @@ print.summary.tidymod_lm <- function(x, ...) {
   invisible(x)
 }
 
+#' @export
+predict.tidymod_lm <- function(object, newdata=NULL, ...) {
+  if (is.null(newdata)) {
+    y <- fitted(object)
+  } else {
+    if (!is.null(object$formula)) {
+      x <- model.matrix(object$formula, newdata)
+    } else {
+      x <- newdata
+    }
+    y <- as.vector(x %*% coef(object))
+  }
+  y
+}
 
