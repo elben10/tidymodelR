@@ -20,7 +20,7 @@ tidymod_lm_matrix <- function(X, Y, ...) {
   res$coefficients <- as.vector(res$coefficients)
   names(res$coefficients) <- colnames(X)
   res$fitted.values <- as.vector(X %*% res$coefficients)
-  res$residuals <- Y - res$fitted_values
+  res$residuals <- Y - res$fitted.values
   res$call <- match.call()
   res$intercept <- any(apply(X, 2, function(x) all(x == x[1])))
   
@@ -48,6 +48,14 @@ tidymod_lm <- function(data, formula, ...) {
   res$formula <- formula
   res$intercept <- attr(attr(mf, "terms"), "intercept")
   res
+}
+
+#' @export
+print.tidymod_lm <- function(x, ...) {
+  cat("\nCall:\n")
+  print(x$call)
+  cat("\nCoefficients:\n")
+  print(x$coefficients, digits=5)
 }
 
 #' @export
@@ -88,3 +96,23 @@ summary.tidymod_lm <- function(object, ...) {
   class(res) <- "summary.tidymod_lm"
   res
 }
+
+#' @export
+print.summary.tidymod_lm <- function(x, ...) {
+  cat("\nCall:\n")
+  print(x$call)
+  cat("\nResiduals:\n")
+  print(x$residSum)
+  cat("\n")
+  
+  printCoefmat(x$coefficients, P.values=TRUE, has.Pvalue=TRUE)
+  digits <- max(3, getOption("digits") - 3)
+  cat("\nResidual standard error: ", formatC(x$sigma, digits=digits), " on ",
+      formatC(x$df), " degrees of freedom\n", sep="")
+  cat("Multiple R-squared: ", formatC(x$r.squared, digits=digits),
+      ",\tAdjusted R-squared: ",formatC(x$adj.r.squared, digits=digits),
+      "\n", sep="")
+  invisible(x)
+}
+
+
