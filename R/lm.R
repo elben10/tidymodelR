@@ -2,7 +2,7 @@
 #' @importFrom stats model.frame model.matrix model.response
 
 # The following function is copied from RcppArmadillo, and the modified
-#' @export
+
 tidymod_lm_pure <- function(X, Y, ...) {
   stopifnot(is.matrix(X), is.vector(Y), nrow(Y) == nrow(X))
   
