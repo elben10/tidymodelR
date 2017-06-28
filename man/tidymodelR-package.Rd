@@ -8,3 +8,7 @@
 \description{
 More about what it does (maybe more than one line)
 }
+\author{
+\strong{Maintainer}: Jakob Jul Elben \email{elbenjakobjul@gmail.com}
+
+}
