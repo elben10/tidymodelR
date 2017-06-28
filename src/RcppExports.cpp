@@ -6,55 +6,21 @@
 
 using namespace Rcpp;
 
-// rcpparma_hello_world
-arma::mat rcpparma_hello_world();
-RcppExport SEXP tidymodelR_rcpparma_hello_world() {
+// lm_rcpp
+List lm_rcpp(const arma::mat& X, const arma::colvec& y);
+RcppExport SEXP tidymodelR_lm_rcpp(SEXP XSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpparma_hello_world());
-    return rcpp_result_gen;
-END_RCPP
-}
-// rcpparma_outerproduct
-arma::mat rcpparma_outerproduct(const arma::colvec& x);
-RcppExport SEXP tidymodelR_rcpparma_outerproduct(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpparma_outerproduct(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// rcpparma_innerproduct
-double rcpparma_innerproduct(const arma::colvec& x);
-RcppExport SEXP tidymodelR_rcpparma_innerproduct(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpparma_innerproduct(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// rcpparma_bothproducts
-Rcpp::List rcpparma_bothproducts(const arma::colvec& x);
-RcppExport SEXP tidymodelR_rcpparma_bothproducts(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::colvec& >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpparma_bothproducts(x));
+    Rcpp::traits::input_parameter< const arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(lm_rcpp(X, y));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"tidymodelR_rcpparma_hello_world", (DL_FUNC) &tidymodelR_rcpparma_hello_world, 0},
-    {"tidymodelR_rcpparma_outerproduct", (DL_FUNC) &tidymodelR_rcpparma_outerproduct, 1},
-    {"tidymodelR_rcpparma_innerproduct", (DL_FUNC) &tidymodelR_rcpparma_innerproduct, 1},
-    {"tidymodelR_rcpparma_bothproducts", (DL_FUNC) &tidymodelR_rcpparma_bothproducts, 1},
+    {"tidymodelR_lm_rcpp", (DL_FUNC) &tidymodelR_lm_rcpp, 2},
     {NULL, NULL, 0}
 };
 
