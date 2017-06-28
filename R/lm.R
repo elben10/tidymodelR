@@ -1,4 +1,5 @@
 #' @import rlang
+#' @importFrom stats model.frame model.matrix model.response
 
 # The following function is copied from RcppArmadillo, and the modified
 
