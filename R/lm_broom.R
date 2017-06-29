@@ -35,5 +35,6 @@ process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = 0.95) {
   }
   #ret$estimate <- identity(ret$estimate)
   #ret
+  print("works")
 }
 
