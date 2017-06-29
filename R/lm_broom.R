@@ -27,11 +27,12 @@ tidy.summary.tidymod_lm <- function(x, ...) {
 }
 
 process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = 0.95) {
-  #if(conf.int) {
+  if(conf.int == TRUE) {
    # CI <- suppressMessages(confint(x, level = conf.level))
     #colnames(CI) = c("conf.low", "conf.high")
     #ret <- cbind(ret, identity(unrowname(CI)))
-  #}
+    print("works")
+  }
   #ret$estimate <- identity(ret$estimate)
   #ret
 }
