@@ -1,6 +1,6 @@
 # The following code is copied from broom, and modified afterwards
 
-#' @importFrom broom fix_data_frame augment_columns
+#' @importFrom broom fix_data_frame
 #' @importFrom plyr ldply
 #' @importFrom stringr str_replace
 
@@ -37,5 +37,3 @@ process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = .95, ...) 
   ret$estimate <- identity(ret$estimate)
   ret
 }
-
-

@@ -48,6 +48,9 @@ tidymod_lm <- function(data, formula, ...) {
   res$call <- match.call()
   res$formula <- formula
   res$intercept <- attr(attr(mf, "terms"), "intercept")
+  res$mf
+  res$X
+  res$Y
   res
 }
 
@@ -168,4 +171,5 @@ confint.tidymod_lm <- function(object, parm, level = 0.95, ...) {
   ci[] <- cf[parm] + ses %o% fac
   ci
 }
+
 
