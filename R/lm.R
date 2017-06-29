@@ -134,17 +134,17 @@ predict.tidymod_lm <- function(object, newdata=NULL, ...) {
   }
   y
 }
-
-#' @export
-vcov.tidymod_lm <- function(object, ...) {
-  res <- object$vcov
-  colnames(res) <- names(object$coefficients)
-  rownames(res) <- names(object$coefficients)
-  res
-}
-
-#' @export 
-vcov.summary.tidymod_lm <- function(object, ...) {
-  object$vcov
-}
+#' 
+#' #' @export
+#' vcov.tidymod_lm <- function(object, ...) {
+#'   res <- object$vcov
+#'   colnames(res) <- names(object$coefficients)
+#'   rownames(res) <- names(object$coefficients)
+#'   res
+#' }
+#' 
+#' #' @export 
+#' vcov.summary.tidymod_lm <- function(object, ...) {
+#'   object$vcov
+#' }
 
