@@ -31,6 +31,7 @@ process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = 0.95) {
     #CI <- confint(x, level = conf.level)
     #colnames(CI) = c("conf.low", "conf.high")
     #ret <- cbind(ret, identity(unrowname(CI)))
+    print("works1")
   }
   ret$estimate <- identity(ret$estimate)
   ret
