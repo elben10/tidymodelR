@@ -137,6 +137,8 @@ predict.tidymod_lm <- function(object, newdata=NULL, ...) {
  
 #' @export
 tidymod <- function(object, newdata=NULL, ...) {
-  object$coefficients
+  res <- object$vcov
+  rownames(res) <- names(object$coefficients)
+  colnames(res) <- names(object$coefficients)
 }
 
