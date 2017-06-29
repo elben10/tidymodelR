@@ -26,10 +26,5 @@ tidy.summary.tidymod_lm <- function(x, ...) {
   ret
 }
 
-process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = 0.95) {
-  if(conf.int == TRUE) "works" 
-  
-  ret$estimate <- ret$estimate
-  ret
-}
+
 
