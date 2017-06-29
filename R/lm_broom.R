@@ -28,8 +28,8 @@ tidy.summary.tidymod_lm <- function(x, ...) {
 
 
 process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = .95, ...) {
-  if(2 + 2 == 4) {
-    ret <- x
+  if(conf.int) {
+    CI <- confint(x, level = conf.level)
   }
   
   x <- 3
