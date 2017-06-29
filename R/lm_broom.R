@@ -3,7 +3,7 @@
 #' @importFrom broom fix_data_frame augment_columns
 #' @importFrom plyr ldply
 #' @importFrom stringr str_replace
-#' @importFrom base identity
+#' @importFrom stats confint
 
 #' @export
 tidy.tidymod_lm <- function(x, conf.int = FALSE, conf.level = .95, ...) {
