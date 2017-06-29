@@ -85,13 +85,18 @@ summary.tidymod_lm <- function(object, ...) {
   rdf <- object$df
   adj.r.squared <- 1 - (1 - r.squared) * ((n - df.int)/rdf)
   
+  vcov <- object$vcov
+  colnames(vcov) <- names(object$coefficients)
+  rownames(vcov) <- names(object$coefficients)
+  
   res <- list(call=object$call,
               coefficients=TAB,
               r.squared=r.squared,
               adj.r.squared=adj.r.squared,
               sigma=sqrt(sum((object$residuals)^2)/rdf),
               df=object$df,
-              residSum=summary(object$residuals, digits=5)[-4])
+              residSum=summary(object$residuals, digits=5)[-4],
+              vcov = vcov)
   
   class(res) <- "summary.tidymod_lm"
   res
@@ -128,5 +133,18 @@ predict.tidymod_lm <- function(object, newdata=NULL, ...) {
     y <- as.vector(x %*% coef(object))
   }
   y
+}
+
+#' @export
+vcov.tidymod_lm <- function(object, ...) {
+  res <- object$vcov
+  colnames(res) <- names(object$coefficients)
+  rownames(res) <- names(object$coefficients)
+  res
+}
+
+#' @export 
+vcov.summary.tidymod_lm <- function(object, ...) {
+  object$vcov
 }
 

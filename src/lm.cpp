@@ -34,10 +34,11 @@ List lm_rcpp(const arma::mat& X, const arma::colvec& y) {
   
   // std.errors of coefficients
   double s2 = std::inner_product(res.begin(), res.end(), res.begin(), 0.0)/(n - k);
-  
-  arma::colvec std_err = arma::sqrt(s2 * arma::diagvec(arma::pinv(arma::trans(X)*X)));  
+  arma::mat vcov = s2 * arma::pinv(arma::trans(X)*X);
+  arma::colvec std_err = arma::sqrt(arma::diagvec(vcov)); 
   
   return List::create(Named("coefficients") = coef,
                       Named("stderr")       = std_err,
-                      Named("df.residual")  = n - k);
+                      Named("df.residual")  = n - k,
+                      Named("vcov") = vcov);
 }
