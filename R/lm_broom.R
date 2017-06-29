@@ -3,6 +3,7 @@
 #' @importFrom broom fix_data_frame augment_columns
 #' @importFrom plyr ldply
 #' @importFrom stringr str_replace
+#' @importFrom base identity
 
 #' @export
 tidy.tidymod_lm <- function(x, conf.int = FALSE, conf.level = .95, ...) {
@@ -30,6 +31,7 @@ tidy.summary.tidymod_lm <- function(x, ...) {
 process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = .95, ...) {
   if(conf.int) {
     CI <- confint(x, level = conf.level)
+    colnames(CI) <-  c("conf.low", "conf.high")
   }
   
   x <- 3
