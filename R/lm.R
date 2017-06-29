@@ -136,7 +136,7 @@ predict.tidymod_lm <- function(object, newdata=NULL, ...) {
 }
  
 #' @export
- vcov.tidymod_lm <- function(object, ...) {
+tidymod_lm <- function(object, ...) {
    res <- object$vcov
    colnames(res) <- names(object$coefficients)
    rownames(res) <- names(object$coefficients)
