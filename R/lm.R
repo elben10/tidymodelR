@@ -1,5 +1,5 @@
 #' @import rlang
-#' @importFrom stats model.frame model.matrix model.response
+#' @importFrom stats model.frame model.matrix model.response coef fitted printCoefmat pt
 
 # The following function is copied from RcppArmadillo, and the modified
 
