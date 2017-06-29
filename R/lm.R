@@ -1,5 +1,6 @@
 #' @import rlang
 #' @importFrom stats model.frame model.matrix model.response coef fitted printCoefmat pt
+#' @importFrom stats confint qt vcov
 
 # The following function is copied from RcppArmadillo, and the modified
 
@@ -152,7 +153,7 @@ vcov.summary.tidymod_lm <- function(object, newdata=NULL, ...) {
 }
 
 #' @export 
-confint.tidymod_lm <- function(object, parm, level = 0.95) {
+confint.tidymod_lm <- function(object, parm, level = 0.95, ...) {
   cf <- coef(object)
   pnames <- names(cf)
   if(missing(parm)) parm <- pnames

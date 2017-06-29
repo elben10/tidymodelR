@@ -13,6 +13,7 @@ Imports:
     plyr,
     Rcpp (>= 0.12.11),
     rlang,
+    stringr
 Suggests:
     covr,
     glue (>= 1.1.0),
