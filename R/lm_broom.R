@@ -1,6 +1,6 @@
 # The following code is copied from broom, and modified afterwards
 
-#' @importFrom broom fix_data_frame
+#' @importFrom broom fix_data_frame augment_columns
 #' @export
 tidy.tidymod_lm <- function(x, conf.int = FALSE, conf.level = .95, ...) {
   s <- summary(x)
@@ -31,4 +31,11 @@ process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = .95) {
   }
   ret$estimate <- identity(ret$estimate)
   ret
+}
+
+#' @export
+augment.tidymod_lm <- function(x, data = model.frame(x), newdata,
+                               type.predict, type.residuals, ...) {
+  augment_columns(x, data, newdata, type.predict = type.predict,
+                  type.residuals = type.residuals)
 }
