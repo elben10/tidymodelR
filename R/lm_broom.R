@@ -37,3 +37,19 @@ process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = .95, ...) 
   ret$estimate <- identity(ret$estimate)
   ret
 }
+
+#' @export
+glance.tidymod_lm <- function(object, ...) {
+  s <- summary(object)
+  ret <- glance(s, ...)
+  ret
+}
+
+#' @export
+glance.summary.tidymod_lm <- function(object, ...) {
+  ret <- with(object, cbind(data.frame(r.squared = r.squared,
+                                       adj.r.squared = adj.r.squared,
+                                       sigma = sigma,
+                                       df = df)))
+  unrowname(ret)
+}
