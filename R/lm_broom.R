@@ -9,7 +9,7 @@ tidy.tidymod_lm <- function(x, conf.int = FALSE, conf.level = .95, ...) {
   s <- summary(x)
   ret <- tidy.summary.tidymod_lm(s)
   
-#  process_tidymod_lm(ret, x, conf.int = conf.int, conf.level = conf.level)
+  process_tidymod_lm(ret, x, conf.int = conf.int, conf.level = conf.level)
 }
 
 #' @export
@@ -30,9 +30,12 @@ tidy.summary.tidymod_lm <- function(x, ...) {
 process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = .95, ...) {
   if(conf.int) {
     CI <- suppressMessages(stats::confint(x, level = conf.level))
+    colnames(CI) = c("conf.low", "conf.high")
+    ret <- cbind(ret, identity(unrowname(CI)))
   }
   
-  x <- 3
+  ret$estimate <- identity(ret$estimate)
+  ret
 }
 
 
