@@ -27,10 +27,7 @@ tidy.summary.tidymod_lm <- function(x, ...) {
 }
 
 process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = 0.95) {
-  if(conf.int) {
-    #CI <- confint(x, level = conf.level)
-    #colnames(CI) = c("conf.low", "conf.high")
-    #ret <- cbind(ret, identity(unrowname(CI)))
+  if(conf.int == TRUE) {
     print("works1")
   }
   ret$estimate <- identity(ret$estimate)
