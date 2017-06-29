@@ -27,9 +27,8 @@ tidy.summary.tidymod_lm <- function(x, ...) {
 }
 
 process_tidymod_lm <- function(ret, x, conf.int = FALSE, conf.level = 0.95) {
-  if(conf.int == TRUE) {
-    print("works1")
-  }
+  if(conf.int == TRUE) "works" 
+  
   ret$estimate <- identity(ret$estimate)
   ret
 }
