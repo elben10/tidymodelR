@@ -9,7 +9,11 @@ init:
 
 install:
   ps: Bootstrap
-
+  
+environment:
+  global:
+    WARNINGS_ARE_ERRORS: 
+    
 cache:
   - C:\RLibrary
 
