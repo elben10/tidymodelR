@@ -143,3 +143,11 @@ vcov.tidymod_lm <- function(object, newdata=NULL, ...) {
   res
 }
 
+#' @export
+vcov.summary.tidymod_lm <- function(object, newdata=NULL, ...) {
+  res <- object$vcov
+  rownames(res) <- rownames(object$coefficients)
+  colnames(res) <- rownames(object$coefficients)
+  res
+}
+
