@@ -7,7 +7,7 @@ tidymod_coef <- function(object, ...) {
 tidymod_coef.tidymod_lm <- function(object, ...) {
   res <- cbind(object$coefficients)
   rownames(res) <- names(object$coefficients)
-  colnames(res) <- "coefficients"
+  colnames(res) <- "Estimate"
   res
 }
 
