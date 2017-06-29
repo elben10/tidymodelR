@@ -9,8 +9,10 @@ Authors@R: c(
 Description: More about what it does (maybe more than one line)
 License: MIT + file LICENSE
 Imports: 
+    broom,
+    plyr,
     Rcpp (>= 0.12.11),
-    rlang
+    rlang,
 Suggests:
     covr,
     glue (>= 1.1.0),

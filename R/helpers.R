@@ -3,3 +3,9 @@ format.perc <- function(probs, digits)
   ## quantile.default() sometimes uses a version of it
   paste(format(100 * probs, trim = TRUE, scientific = FALSE, digits = digits),
         "%")
+
+# Copied from broom
+unrowname <- function(x) {
+  rownames(x) <- NULL
+  x
+}
