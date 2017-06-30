@@ -3,6 +3,21 @@
 #' @importFrom broom fix_data_frame
 #' @importFrom plyr ldply
 #' @importFrom stringr str_replace
+#' @importFrom broom tidy glance
+
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
+
+#' @export
+tidymod_tidy <- function(object, conf_int = FALSE, conf_level = 0.95) {
+  tidy(object, conf_int, conf_level)
+}
+
+#' @export
+tidymod_glance <- function(object) {
+  glance(object)
+}
 
 #' @export
 tidy.tidymod_lm <- function(x, conf.int = FALSE, conf.level = .95, ...) {

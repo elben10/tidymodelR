@@ -11,6 +11,7 @@ License: MIT + file LICENSE
 Imports: 
     broom,
     Formula,
+    magrittr, 
     plyr,
     Rcpp (>= 0.12.11),
     rlang,
