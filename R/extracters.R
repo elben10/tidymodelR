@@ -37,3 +37,13 @@ tidymod_stderr.summary.tidymod_lm <- function(object, ...) {
   colnames(res) <- "StdErr"
   res
 }
+
+#' @export
+tidymod_confint <- function(object, parm, conf_level = 0.95, ...) {
+  UseMethod("tidymod_confint")
+}
+
+#' @export
+tidymod_confint.tidymod_lm <- function(object, parm, conf_level = 0.95, ...) {
+  confint(object, parm, level = conf_level, ...)
+}
