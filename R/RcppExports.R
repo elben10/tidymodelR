@@ -5,3 +5,7 @@ lm_rcpp <- function(X, y) {
     .Call(tidymodelR_lm_rcpp, X, y)
 }
 
+lm_iv_rcpp <- function(X, Y, Z) {
+    .Call(tidymodelR_lm_iv_rcpp, X, Y, Z)
+}
+
