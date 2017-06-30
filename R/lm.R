@@ -22,6 +22,7 @@ tidymod_lm_matrix <- function(X, Y, ...) {
   names(res$coefficients) <- colnames(X)
   res$fitted.values <- as.vector(X %*% res$coefficients)
   res$residuals <- Y - res$fitted.values
+  res$data <- cbind(Y, X)
   res$call <- match.call()
   res$intercept <- any(apply(X, 2, function(x) all(x == x[1])))
   
@@ -78,11 +79,13 @@ summary.tidymod_lm <- function(object, ...) {
   ## cf src/library/stats/R/lm.R and case with no weights and an intercept
   f <- object$fitted.values
   r <- object$residuals
+  a <- object$data[, 1]
   #mss <- sum((f - mean(f))^2)
   mss <- if (object$intercept) sum((f - mean(f))^2) else sum(f^2)
   rss <- sum(r^2)
+  tss <- sum((a - mean(a))^2)
   
-  r.squared <- mss/(mss + rss)
+  r.squared <- 1 - (rss / tss)
   df.int <- if (object$intercept) 1L else 0L
   
   n <- length(f)
