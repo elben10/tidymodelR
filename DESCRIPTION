@@ -10,6 +10,7 @@ Description: More about what it does (maybe more than one line)
 License: MIT + file LICENSE
 Imports: 
     broom,
+    Formula,
     plyr,
     Rcpp (>= 0.12.11),
     rlang,
