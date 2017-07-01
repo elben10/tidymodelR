@@ -4,9 +4,17 @@
 \name{tidymodelR-package}
 \alias{tidymodelR}
 \alias{tidymodelR-package}
-\title{tidymodelR: What the package does (short line)}
+\title{tidymodelR: Statistical modelling and testing}
 \description{
-More about what it does (maybe more than one line)
+A implementation of modelling and testing using piping.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://elben10.github.io/tidymodelR}
+  \item Report bugs at \url{https://github.com/elben10/tidymodelR/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Jakob Jul Elben \email{elbenjakobjul@gmail.com}

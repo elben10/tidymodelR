@@ -1,13 +1,14 @@
-Package: tidymodelR
 Type: Package
-Title: What the package does (short line)
+Package: tidymodelR
 Version: 1.0
-Date: 2017-06-28
+Title: Statistical modelling and testing
+Description: A implementation of modelling and testing using piping.
 Authors@R: c(
     person("Jakob Jul", "Elben", , "elbenjakobjul@gmail.com", c("aut", "cre"))
     )
-Description: More about what it does (maybe more than one line)
-License: MIT + file LICENSE
+URL: https://elben10.github.io/tidymodelR
+BugReports: https://github.com/elben10/tidymodelR/issues
+Encoding: UTF-8
 Imports: 
     broom,
     Formula,
@@ -22,5 +23,7 @@ Suggests:
     knitr,
     stats
 LinkingTo: Rcpp, RcppArmadillo
+LazyData: yes
 RoxygenNote: 6.0.1
+License: MIT + file LICENSE
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
