@@ -10,11 +10,25 @@ tidymod_lm_pure <- function(X, Y, ...) {
   .Call("tidymodelR_lm_rcpp", X, Y, PACKAGE = "tidymodelR")
 }
 
+#' OLS estimation - Matrix
+#' 
+#' The function conduct the very common OLS estimation, which minimizes the sum of squared residuals. 
+#' @param X is the covariate matrix, which contains all explanatory variables. Has to be a matrix or be convertible
+#' with as.matrix() 
+#' @param Y is the explained variable. Has to be numeric or be convertible with as.numeric()
+#' @return A list is returned containing the following elements coefficients, standard errors, 
+#' degrees of freedom, variance-covariance matrix, fitted values, residuals, data used in the regression,
+#' the call, the intercept and the formula
+#' @aliases tidymod_lm
 #' @export
+#' @examples 
+#' tidymod_lm_matrix(mtcars[,2:3], mtcars[,1])
 tidymod_lm_matrix <- function(X, Y, ...) {
   
-  X <- as.matrix(X)
-  Y <- as.numeric(Y)
+  if(!(is.matrix(X) & is.numeric(Y))) {
+    X <- as.matrix(X)
+    Y <- as.numeric(Y)
+  }
   
   res <- tidymod_lm_pure(X, Y)
   
@@ -30,7 +44,19 @@ tidymod_lm_matrix <- function(X, Y, ...) {
   res
 }
 
+#' OLS estimation - formula
+#' 
+#' The function conduct the very common OLS estimation, which minimizes the sum of squared residuals. The function
+#' is implemented such that it works with piping, which creates more readable code.
+#' @param data must be a dataframe containing the variables used in the estimation
+#' @param formula must be a modelformula, which specifies the explained and explanatory variables
+#' @return A list is returned containing the following elements coefficients, standard errors, 
+#' degrees of freedom, variance-covariance matrix, fitted values, residuals, data used in the regression,
+#' the call, the intercept and the formula
 #' @export
+#' @examples 
+#' tidymod_lm(mtcars, mpg~cyl)
+#' mtcars %>% tidymod_lm(mpg~cyl)
 tidymod_lm <- function(data, formula, ...) {
   
   if(!is.data.frame(data)) {
