@@ -1,4 +1,4 @@
-#' @importFrom stats delete.response terms
+#' @importFrom stats delete.response terms contrasts update
 #' @importFrom Formula as.Formula
 tidymod_iv_pure <- function(X, Y, Z, ...) {
   stopifnot(is.matrix(X), is.numeric(Y), is.matrix(Z))
