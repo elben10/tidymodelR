@@ -2,7 +2,6 @@
 % Please edit documentation in R/lm.R
 \name{tidymod_lm_matrix}
 \alias{tidymod_lm_matrix}
-\alias{tidymod_lm}
 \title{OLS estimation - Matrix}
 \usage{
 tidymod_lm_matrix(X, Y, ...)
