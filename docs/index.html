@@ -54,6 +54,76 @@
 
 <p>THE PACKAGE IS VERY MUCH UNDER CONSTRUCTION</p>
 </div>
+<div id="overview" class="section level1">
+<h1 class="hasAnchor">
+<a href="#overview" class="anchor"></a>Overview</h1>
+<p>tidymodelR is model package to R, which aim at making the statistical modelling and testing more handy in R. It implement the most common estimation methods, and will contain the most common statistical tests in the future.</p>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># At the moment, the only way to install tidymodelR is from Github, which can be installed by:</span>
+devtools::<span class="kw">install_github</span>(<span class="st">"elben10/tidymodelR"</span>)</code></pre></div>
+</div>
+<div id="usage" class="section level2">
+<h2 class="hasAnchor">
+<a href="#usage" class="anchor"></a>Usage</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidymodelR)
+
+mtcars %&gt;%
+<span class="st">  </span><span class="kw"><a href="reference/tidymod_lm.html">tidymod_lm</a></span>(mpg~cyl) %&gt;%
+<span class="st">  </span><span class="kw">summary</span>()
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; tidymod_lm(data = ., formula = mpg ~ cyl)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;     Min.  1st Qu.   Median  3rd Qu.     Max. </span>
+<span class="co">#&gt; -4.98140 -2.11850  0.22174  1.07170  7.51860 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;             Estimate   StdErr t.value   p.value    </span>
+<span class="co">#&gt; (Intercept) 37.88458  2.07384 18.2678 &lt; 2.2e-16 ***</span>
+<span class="co">#&gt; cyl         -2.87579  0.32241 -8.9197 6.113e-10 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 3.206 on 30 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared: 0.7262,  Adjusted R-squared: 0.7171</span>
+
+mtcars %&gt;%
+<span class="st">  </span><span class="kw"><a href="reference/tidymod_lm.html">tidymod_lm</a></span>(mpg~cyl) %&gt;%
+<span class="st">  </span><span class="kw">tidymod_confint</span>()
+<span class="co">#&gt;                 2.5 %    97.5 %</span>
+<span class="co">#&gt; (Intercept) 33.649223 42.119930</span>
+<span class="co">#&gt; cyl         -3.534237 -2.217343</span>
+
+mtcars %&gt;%
+<span class="st">  </span><span class="kw">tidymod_iv</span>(mpg~cyl|am) %&gt;%
+<span class="st">  </span><span class="kw">summary</span>()
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; tidymod_iv(data = ., formula = mpg ~ cyl | am)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;     Min.  1st Qu.   Median  3rd Qu.     Max. </span>
+<span class="co">#&gt; -7.16360 -2.67010  0.40649  2.20490  6.12990 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;             Estimate   StdErr t.value   p.value    </span>
+<span class="co">#&gt; (Intercept) 44.05714  4.43226  9.9401 5.261e-11 ***</span>
+<span class="co">#&gt; cyl         -3.87338  0.70856 -5.4666 6.240e-06 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 3.682 on 30 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared: 0.6388,  Adjusted R-squared: 0.6268</span>
+
+mtcars %&gt;%
+<span class="st">  </span><span class="kw">tidymod_iv</span>(mpg~cyl|am) %&gt;%
+<span class="st">  </span><span class="kw">confint</span>()
+<span class="co">#&gt;                 2.5 %    97.5 %</span>
+<span class="co">#&gt; (Intercept) 35.005266 53.109020</span>
+<span class="co">#&gt; cyl         -5.320445 -2.426308</span></code></pre></div>
+</div>
+</div>
 </div>
   </div>
 

@@ -8,7 +8,7 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "figures/README-"
 )
 options(tibble.print_min = 5, tibble.print_max = 5)
 ```
@@ -21,3 +21,36 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 [![codecov](https://codecov.io/gh/elben10/tidymodelr/branch/master/graph/badge.svg)](https://codecov.io/gh/elben10/tidymodelr)
 
 THE PACKAGE IS VERY MUCH UNDER CONSTRUCTION
+
+# Overview
+tidymodelR is model package to R, which aim at making the statistical modelling and testing more handy in R. It implement the most common estimation methods, and will contain the most common statistical tests in the future. 
+
+## Installation
+
+```{r, eval = FALSE}
+# At the moment, the only way to install tidymodelR is from Github, which can be installed by:
+devtools::install_github("elben10/tidymodelR")
+```
+
+## Usage
+
+```{r}
+library(tidymodelR)
+
+mtcars %>%
+  tidymod_lm(mpg~cyl) %>%
+  summary()
+
+mtcars %>%
+  tidymod_lm(mpg~cyl) %>%
+  tidymod_confint()
+
+mtcars %>%
+  tidymod_iv(mpg~cyl|am) %>%
+  summary()
+
+mtcars %>%
+  tidymod_iv(mpg~cyl|am) %>%
+  confint()
+```
+
