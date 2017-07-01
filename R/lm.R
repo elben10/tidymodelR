@@ -19,7 +19,6 @@ tidymod_lm_pure <- function(X, Y, ...) {
 #' @return A list is returned containing the following elements coefficients, standard errors, 
 #' degrees of freedom, variance-covariance matrix, fitted values, residuals, data used in the regression,
 #' the call, the intercept and the formula
-#' @aliases tidymod_lm
 #' @export
 #' @examples 
 #' tidymod_lm_matrix(mtcars[,2:3], mtcars[,1])

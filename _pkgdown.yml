@@ -1,0 +1,5 @@
+reference:
+- title: OLS
+  contents:
+  - tidymod_lm
+  - tidymod_lm_matrix
