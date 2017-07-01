@@ -4,7 +4,7 @@
 
 # The following function is copied from RcppArmadillo, and the modified
 
-tidymod_lm_pure <- function(X, Y, ...) {
+tidymod_lm_pure <- function(X, Y) {
   stopifnot(is.matrix(X), is.vector(Y), nrow(Y) == nrow(X))
   
   .Call("tidymodelR_lm_rcpp", X, Y, PACKAGE = "tidymodelR")
@@ -56,7 +56,7 @@ tidymod_lm_matrix <- function(X, Y, ...) {
 #' @examples 
 #' tidymod_lm(mtcars, mpg~cyl)
 #' mtcars %>% tidymod_lm(mpg~cyl)
-tidymod_lm <- function(data, formula, ...) {
+tidymod_lm <- function(data, formula) {
   
   if(!is.data.frame(data)) {
     abort("data has to be a data.frame")
@@ -70,7 +70,7 @@ tidymod_lm <- function(data, formula, ...) {
   X <- model.matrix(attr(mf, "terms"), data=mf)
   Y <- model.response(mf)
   
-  res <- tidymod_lm_matrix(X, Y, ...)
+  res <- tidymod_lm_matrix(X, Y)
   res$call <- match.call()
   res$formula <- formula
   res$intercept <- attr(attr(mf, "terms"), "intercept")
@@ -81,7 +81,7 @@ tidymod_lm <- function(data, formula, ...) {
 }
 
 #' @export
-print.tidymod_lm <- function(x, ...) {
+print.tidymod_lm <- function(x) {
   cat("\nCall:\n")
   print(x$call)
   cat("\nCoefficients:\n")
@@ -89,7 +89,7 @@ print.tidymod_lm <- function(x, ...) {
 }
 
 #' @export
-summary.tidymod_lm <- function(object, ...) {
+summary.tidymod_lm <- function(object) {
   se <- object$stderr
   tval <- coef(object) / se
   
@@ -135,7 +135,7 @@ summary.tidymod_lm <- function(object, ...) {
 }
 
 #' @export
-print.summary.tidymod_lm <- function(x, ...) {
+print.summary.tidymod_lm <- function(x) {
   cat("\nCall:\n")
   print(x$call)
   cat("\nResiduals:\n")
@@ -153,7 +153,7 @@ print.summary.tidymod_lm <- function(x, ...) {
 }
 
 #' @export
-predict.tidymod_lm <- function(object, newdata=NULL, ...) {
+predict.tidymod_lm <- function(object) {
   if (is.null(newdata)) {
     y <- fitted(object)
   } else {
@@ -168,7 +168,7 @@ predict.tidymod_lm <- function(object, newdata=NULL, ...) {
 }
  
 #' @export
-vcov.tidymod_lm <- function(object, newdata=NULL, ...) {
+vcov.tidymod_lm <- function(object) {
   res <- object$vcov
   rownames(res) <- names(object$coefficients)
   colnames(res) <- names(object$coefficients)
@@ -176,7 +176,7 @@ vcov.tidymod_lm <- function(object, newdata=NULL, ...) {
 }
 
 #' @export
-vcov.summary.tidymod_lm <- function(object, newdata=NULL, ...) {
+vcov.summary.tidymod_lm <- function(object) {
   res <- object$vcov
   rownames(res) <- rownames(object$coefficients)
   colnames(res) <- rownames(object$coefficients)
@@ -184,7 +184,7 @@ vcov.summary.tidymod_lm <- function(object, newdata=NULL, ...) {
 }
 
 #' @export 
-confint.tidymod_lm <- function(object, parm, level = 0.95, ...) {
+confint.tidymod_lm <- function(object, parm, level = 0.95) {
   cf <- coef(object)
   pnames <- names(cf)
   if(missing(parm)) parm <- pnames

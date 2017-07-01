@@ -4,7 +4,7 @@
 \alias{tidymod_lm}
 \title{OLS estimation - formula}
 \usage{
-tidymod_lm(data, formula, ...)
+tidymod_lm(data, formula)
 }
 \arguments{
 \item{data}{must be a dataframe containing the variables used in the estimation}
