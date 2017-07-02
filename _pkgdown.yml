@@ -1,6 +1,6 @@
 template:
-  params:
-    bootswatch: yeti
+  package: template
+  default_assets: false
 
 reference:
 - title: OLS
